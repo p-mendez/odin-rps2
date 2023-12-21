@@ -79,9 +79,9 @@ function game() {
     }
 
     if (playerVictoryCount > computerVictoryCount) {
-        alert("You won!\n\n" + showVictories());
+        alert("YOU WON!🏆\n\n" + showVictories());
     } else {
-        alert("You lost!\n\n" + showVictories());
+        alert("YOU LOST!😭\n\n" + showVictories());
     }
 
 }
