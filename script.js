@@ -1,10 +1,9 @@
 let ROCK = "rock";
 let PAPER = "paper";
 let SCISSORS = "scissors";
-let playerVictories = 0;
-let computerVictories = 0;
+let playerVictoryCount = 0;
+let computerVictoryCount = 0;
 
-game();
 
 
 /* Returns string of computer's Choice. Decision */
@@ -35,24 +34,30 @@ function playRound(playerSelection, computerSelection) {
     // player chooses rock
     else if (playerSelection == "rock") {
         if (computerSelection == "scissors" ) {
+            playerVictoryCount++;
             return resultString("win", playerSelection, computerSelection);
         } else {
+            computerVictoryCount++;
             return resultString("lose", computerSelection, playerSelection);
         }
     } 
     // player chooses paper
     else if (playerSelection == "paper") {
         if (computerSelection == "rock" ) {
+            playerVictoryCount++;
             return resultString("win", playerSelection, computerSelection);
         } else {
+            computerVictoryCount++;
             return resultString("lose", computerSelection, playerSelection);
         }
     } 
     // player chooses scissors
     else {
         if (computerSelection == "paper" ) {
+            playerVictoryCount++;
             return resultString("win", playerSelection, computerSelection);
         } else {
+            computerVictoryCount++;
             return resultString("lose", computerSelection, playerSelection);
         }
     } 
