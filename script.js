@@ -3,6 +3,9 @@ let PAPER = "paper";
 let SCISSORS = "scissors";
 
 console.log(getComputerChoice());
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
 
 
 /* Returns string of computer's Choice. Decision */
@@ -19,16 +22,16 @@ function getComputerChoice() {
 
 /* Return a string that declares the winner of the round 
  * like so: "You Lose! Paper beats Rock".
- *  
- * Algorithm: 
- * If both selections are the same, it's a tie. 
- * Otherwise, go through every remaining combination,
- * assigning either "You Lose" or "You win"
  */
 function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    computerSelection = computerSelection.toLowerCase();
+
     // tied
     if (playerSelection == computerSelection) {
-        return `You tied. You both chose ${playerSelection}`;
+        let selection = playerSelection.substring(0,1).toUpperCase() + 
+                        playerSelection.substring(1);
+        return `You tied. You both chose ${selection}`;
     } 
     // player chooses rock
     else if (playerSelection == "rock") {
