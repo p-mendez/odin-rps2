@@ -4,6 +4,7 @@ let SCISSORS = "scissors";
 let playerVictoryCount = 0;
 let computerVictoryCount = 0;
 
+game();
 
 
 /* Returns string of computer's Choice. Decision */
@@ -64,6 +65,28 @@ function playRound(playerSelection, computerSelection) {
     
 }
 
+/* Plays a best-of-five game that keeps score and reports a winner or loser at the end. 
+*/
+function game() {
+    alert("ROCK, PAPER, SCISSORS GAME");
+    let keepGoing = true;
+    while (keepGoing) {
+        let playerChoice = prompt("Choose: Rock, Paper, or Scissors");
+        let computerSelection = getComputerChoice();
+        alert(playRound(playerChoice, computerSelection) +
+        "\n\n" + showVictories());
+        keepGoing = playerVictoryCount < 3 && computerVictoryCount < 3;
+    }
+
+    if (playerVictoryCount > computerVictoryCount) {
+        alert("You won!\n\n" + showVictories());
+    } else {
+        alert("You lost!\n\n" + showVictories());
+    }
+
+}
+
+/* Returns string showing Win or Lose and what choices were played */
 function resultString(result, winner, loser) {
     winnerProperCase = winner.substring(0,1).toUpperCase() + winner.substring(1).toLowerCase();
     loserProperCase = loser.substring(0,1).toUpperCase() + loser.substring(1).toLowerCase();
@@ -72,6 +95,10 @@ function resultString(result, winner, loser) {
     return `You ${resultProperCase}! ${winnerProperCase} beats ${loserProperCase}`;
 }
 
+/* Returns string of current player and computer victories */
+function showVictories() {
+    return "Player victories : "+ playerVictoryCount + "\nComputer victories: " + computerVictoryCount;
+}
 
 
 
