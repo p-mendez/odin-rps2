@@ -1,11 +1,10 @@
 let ROCK = "rock";
 let PAPER = "paper";
 let SCISSORS = "scissors";
+let playerVictories = 0;
+let computerVictories = 0;
 
-console.log(getComputerChoice());
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+game();
 
 
 /* Returns string of computer's Choice. Decision */
