@@ -12,6 +12,8 @@ const resultDOM = document.querySelector("#result");
 const victoriesDOM = document.querySelector("#victories");
 const imgDOM = document.querySelector("img");
 
+victoriesDOM.textContent = showVictories();
+
 
 rockDOM.addEventListener("click", () => {
     result = playRound(ROCK, getComputerChoice());
