@@ -3,9 +3,27 @@ let PAPER = "paper";
 let SCISSORS = "scissors";
 let playerVictoryCount = 0;
 let computerVictoryCount = 0;
+let result = "";
 
-game();
+const rockDOM = document.querySelector("#rock");
+const paperDOM = document.querySelector("#paper");
+const scissorsDOM = document.querySelector("#scissors"); 
+const resultDOM = document.querySelector("#result");
 
+rockDOM.addEventListener("click", () => {
+    result = playRound(ROCK, getComputerChoice());
+    resultDOM.textContent = result;
+});
+
+paperDOM.addEventListener("click", () => {
+    result = playRound(PAPER, getComputerChoice());
+    resultDOM.textContent = result;
+});
+
+scissorsDOM.addEventListener("click", () => {
+    result = playRound(SCISSORS, getComputerChoice());
+    resultDOM.textContent = result;
+});
 
 /* Returns string of computer's Choice. Decision */
 function getComputerChoice() {
@@ -30,7 +48,7 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
         let selection = playerSelection.substring(0,1).toUpperCase() + 
                         playerSelection.substring(1);
-        return `You tied. You both chose ${selection}`;
+        return `You tied! You both chose ${selection}`;
     } 
     // player chooses rock
     else if (playerSelection == "rock") {
@@ -90,9 +108,9 @@ function game() {
 function resultString(result, winner, loser) {
     winnerProperCase = winner.substring(0,1).toUpperCase() + winner.substring(1).toLowerCase();
     loserProperCase = loser.substring(0,1).toUpperCase() + loser.substring(1).toLowerCase();
-    resultProperCase = result.substring(0,1).toUpperCase() + result.substring(1).toLowerCase();
+    resultProperCase = result.toLowerCase();
 
-    return `You ${resultProperCase}! ${winnerProperCase} beats ${loserProperCase}`;
+    return `You ${resultProperCase}! ${winnerProperCase} beats ${loserProperCase}.`;
 }
 
 /* Returns string of current player and computer victories */

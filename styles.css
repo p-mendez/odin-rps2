@@ -1,0 +1,34 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body {
+    background-color: #B1EDE8;
+}
+
+.container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.options-container {
+    box-shadow: inset;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+img {
+    border: 2px solid black;
+    width: 25%;
+}
+
+.rounded-corners {
+    border-radius: 50px;
+}
+
+.game-console {
+    font:inherit;
+    font-size: 20px;
+}

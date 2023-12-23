@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors Project</title>
-    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js" defer></script>
 </head>
 <body>
-    
+    <div class="container">
+        <h1 class="header">Rock, Paper, Scissors</h1>
+        <ul class="options-container">
+          <img id="rock" class="rounded-corners" src="./images/rock.svg">          
+          <img id="paper" class="rounded-corners" src="./images/paper.svg">          
+          <img id="scissors" class="rounded-corners" src="./images/scissors.svg">      
+        </ul>
+        <div class="game-console">
+            <p id="result"></p>
+        </div>
+    </div>
 </body>
 </html>
