@@ -68,21 +68,21 @@ function playRound(playerSelection, computerSelection) {
 /* Plays a best-of-five game that keeps score and reports a winner or loser at the end. 
 */
 function game() {
-    alert("ROCK, PAPER, SCISSORS GAME");
-    let keepGoing = true;
-    while (keepGoing) {
-        let playerChoice = prompt("Choose: Rock, Paper, or Scissors");
-        let computerSelection = getComputerChoice();
-        alert(playRound(playerChoice, computerSelection) +
-        "\n\n" + showVictories());
-        keepGoing = playerVictoryCount < 3 && computerVictoryCount < 3;
-    }
+    // alert("ROCK, PAPER, SCISSORS GAME");
+    // let keepGoing = true;
+    // while (keepGoing) {
+    //     let playerChoice = prompt("Choose: Rock, Paper, or Scissors");
+    //     let computerSelection = getComputerChoice();
+    //     alert(playRound(playerChoice, computerSelection) +
+    //     "\n\n" + showVictories());
+    //     keepGoing = playerVictoryCount < 3 && computerVictoryCount < 3;
+    // }
 
-    if (playerVictoryCount > computerVictoryCount) {
-        alert("YOU WON!🏆\n\n" + showVictories());
-    } else {
-        alert("YOU LOST!😭\n\n" + showVictories());
-    }
+    // if (playerVictoryCount > computerVictoryCount) {
+    //     alert("YOU WON!🏆\n\n" + showVictories());
+    // } else {
+    //     alert("YOU LOST!😭\n\n" + showVictories());
+    // }
 
 }
 
