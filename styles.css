@@ -1,5 +1,6 @@
 * {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-sizing: border-box;
 }
 body {
     background-color: #B1EDE8;
@@ -24,6 +25,11 @@ img {
     width: 25%;
 }
 
+img:hover {
+    border: 4px solid black;
+
+}
+
 .rounded-corners {
     border-radius: 50px;
 }
@@ -31,4 +37,10 @@ img {
 .game-console {
     font:inherit;
     font-size: 20px;
+}
+
+#victories {
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre;
 }

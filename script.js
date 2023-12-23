@@ -9,20 +9,26 @@ const rockDOM = document.querySelector("#rock");
 const paperDOM = document.querySelector("#paper");
 const scissorsDOM = document.querySelector("#scissors"); 
 const resultDOM = document.querySelector("#result");
+const victoriesDOM = document.querySelector("#victories");
+const imgDOM = document.querySelector("img");
+
 
 rockDOM.addEventListener("click", () => {
     result = playRound(ROCK, getComputerChoice());
     resultDOM.textContent = result;
+    victoriesDOM.textContent = showVictories();
 });
 
 paperDOM.addEventListener("click", () => {
     result = playRound(PAPER, getComputerChoice());
     resultDOM.textContent = result;
+    victoriesDOM.textContent = showVictories();
 });
 
 scissorsDOM.addEventListener("click", () => {
     result = playRound(SCISSORS, getComputerChoice());
     resultDOM.textContent = result;
+    victoriesDOM.textContent = showVictories();
 });
 
 /* Returns string of computer's Choice. Decision */
@@ -115,7 +121,7 @@ function resultString(result, winner, loser) {
 
 /* Returns string of current player and computer victories */
 function showVictories() {
-    return "Player victories : "+ playerVictoryCount + "\nComputer victories: " + computerVictoryCount;
+    return "Player victories :\t"+ playerVictoryCount + "\nComputer victories:\t" + computerVictoryCount;
 }
 
 
