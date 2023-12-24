@@ -67,17 +67,17 @@ function playRound(playerSelection, computerSelection) {
             (playerSelection == PAPER && computerSelection == ROCK) ||
             (playerSelection == SCISSORS && computerSelection == PAPER)) {
                 playerVictoryCount++;
-                return resultString("win", playerSelection, computerSelection);
+                return getResultString("win", playerSelection, computerSelection);
     }
     // computer win scenarios
     else {
         computerVictoryCount++;
-        return resultString("lose", computerSelection, playerSelection);
+        return getResultString("lose", computerSelection, playerSelection);
     }
 } 
 
 /* Returns string showing Win or Lose and what choices were played */
-function resultString(result, winner, loser) {
+function getResultString(result, winner, loser) {
     let winnerProperCase = winner.substring(0,1).toUpperCase() + winner.substring(1).toLowerCase();
     let loserProperCase = loser.substring(0,1).toUpperCase() + loser.substring(1).toLowerCase();
     let resultProperCase = result.toLowerCase();
