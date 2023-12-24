@@ -15,7 +15,10 @@ const optionsContainer = document.querySelector(".options-container");
 
 victoriesDOM.textContent = showVictories();
 
-optionsContainer.addEventListener("click", (e)=> {
+
+optionsContainer.addEventListener("click", delegateClickEvent);
+
+function delegateClickEvent(e) {
     let target = e.target;
 
     if (target.id == "rock") {
@@ -30,9 +33,9 @@ optionsContainer.addEventListener("click", (e)=> {
 
     resultDOM.textContent = result;
     victoriesDOM.textContent = showVictories();
-});
+}
 
-/* Returns string of computer's Choice. Decision */
+/* Returns string of computer's Choice.*/
 function getComputerChoice() {
     let randomNumber = Math.floor((Math.random() * 3) + 1);
     if (randomNumber == 1) {
@@ -44,9 +47,8 @@ function getComputerChoice() {
     }
 }
 
-/* Return a string that declares the winner of the round 
- * like so: "You Lose! Paper beats Rock".
- */
+/* Returns a string that declares the winner of the round 
+ * like so: "You Lose! Paper beats Rock".*/
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
