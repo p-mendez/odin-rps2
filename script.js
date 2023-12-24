@@ -1,34 +1,28 @@
-// VARIABLES AND CONSTANTS
-let playerVictoryCount = 0;
-let computerVictoryCount = 0;
-let result = "";
-
+// CONSTANTS
 const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
 
-const rockDOM = document.querySelector("#rock");
-const paperDOM = document.querySelector("#paper");
-const scissorsDOM = document.querySelector("#scissors"); 
+// VARIABLES
+let playerVictoryCount = 0;
+let computerVictoryCount = 0;
+
+// DOM Elements
 const resultDOM = document.querySelector("#result");
 const victoriesDOM = document.querySelector("#victories");
-const imgDOM = document.querySelector("img");
 const optionsContainer = document.querySelector(".options-container");
-
-// CODE TO RUN
 victoriesDOM.textContent = showVictories();
 
-
+// EVENT LISTENERS
 optionsContainer.addEventListener("click", delegateClickEvent);
 
 
-
 // FUNCTIONS
-
 /* Handles the click event and delegates it to the appropriate action 
  * based on the ID of the clicked target. */
 function delegateClickEvent(e) {
     let target = e.target;
+    let result;
 
     if (target.id == "rock") {
         result = playRound(ROCK, getComputerChoice());
@@ -84,9 +78,9 @@ function playRound(playerSelection, computerSelection) {
 
 /* Returns string showing Win or Lose and what choices were played */
 function resultString(result, winner, loser) {
-    winnerProperCase = winner.substring(0,1).toUpperCase() + winner.substring(1).toLowerCase();
-    loserProperCase = loser.substring(0,1).toUpperCase() + loser.substring(1).toLowerCase();
-    resultProperCase = result.toLowerCase();
+    let winnerProperCase = winner.substring(0,1).toUpperCase() + winner.substring(1).toLowerCase();
+    let loserProperCase = loser.substring(0,1).toUpperCase() + loser.substring(1).toLowerCase();
+    let resultProperCase = result.toLowerCase();
 
     return `You ${resultProperCase}! ${winnerProperCase} beats ${loserProperCase}.`;
 }
