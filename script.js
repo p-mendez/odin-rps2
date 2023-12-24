@@ -1,9 +1,11 @@
-let ROCK = "rock";
-let PAPER = "paper";
-let SCISSORS = "scissors";
+// VARIABLES AND CONSTANTS
 let playerVictoryCount = 0;
 let computerVictoryCount = 0;
 let result = "";
+
+const ROCK = "rock";
+const PAPER = "paper";
+const SCISSORS = "scissors";
 
 const rockDOM = document.querySelector("#rock");
 const paperDOM = document.querySelector("#paper");
@@ -13,11 +15,18 @@ const victoriesDOM = document.querySelector("#victories");
 const imgDOM = document.querySelector("img");
 const optionsContainer = document.querySelector(".options-container");
 
+// CODE TO RUN
 victoriesDOM.textContent = showVictories();
 
 
 optionsContainer.addEventListener("click", delegateClickEvent);
 
+
+
+// FUNCTIONS
+
+/* Handles the click event and delegates it to the appropriate action 
+ * based on the ID of the clicked target. */
 function delegateClickEvent(e) {
     let target = e.target;
 
@@ -86,7 +95,3 @@ function resultString(result, winner, loser) {
 function showVictories() {
     return "Player victories :\t"+ playerVictoryCount + "\nComputer victories:\t" + computerVictoryCount;
 }
-
-
-
-
