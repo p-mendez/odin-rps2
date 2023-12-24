@@ -57,38 +57,19 @@ function playRound(playerSelection, computerSelection) {
                         playerSelection.substring(1);
         return `You tied! You both chose ${selection}`;
     } 
-    // player chooses rock
-    else if (playerSelection == "rock") {
-        if (computerSelection == "scissors" ) {
-            playerVictoryCount++;
-            return resultString("win", playerSelection, computerSelection);
-        } else {
-            computerVictoryCount++;
-            return resultString("lose", computerSelection, playerSelection);
-        }
-    } 
-    // player chooses paper
-    else if (playerSelection == "paper") {
-        if (computerSelection == "rock" ) {
-            playerVictoryCount++;
-            return resultString("win", playerSelection, computerSelection);
-        } else {
-            computerVictoryCount++;
-            return resultString("lose", computerSelection, playerSelection);
-        }
-    } 
-    // player chooses scissors
+    // player win scenarios
+    else if ((playerSelection == ROCK && computerSelection == SCISSORS) ||
+            (playerSelection == PAPER && computerSelection == ROCK) ||
+            (playerSelection == SCISSORS && computerSelection == PAPER)) {
+                playerVictoryCount++;
+                return resultString("win", playerSelection, computerSelection);
+    }
+    // computer win scenarios
     else {
-        if (computerSelection == "paper" ) {
-            playerVictoryCount++;
-            return resultString("win", playerSelection, computerSelection);
-        } else {
-            computerVictoryCount++;
-            return resultString("lose", computerSelection, playerSelection);
-        }
-    } 
-    
-}
+        computerVictoryCount++;
+        return resultString("lose", computerSelection, playerSelection);
+    }
+} 
 
 /* Returns string showing Win or Lose and what choices were played */
 function resultString(result, winner, loser) {
