@@ -11,24 +11,23 @@ const scissorsDOM = document.querySelector("#scissors");
 const resultDOM = document.querySelector("#result");
 const victoriesDOM = document.querySelector("#victories");
 const imgDOM = document.querySelector("img");
+const optionsContainer = document.querySelector(".options-container");
 
 victoriesDOM.textContent = showVictories();
 
+optionsContainer.addEventListener("click", (e)=> {
+    let target = e.target;
 
-rockDOM.addEventListener("click", () => {
-    result = playRound(ROCK, getComputerChoice());
-    resultDOM.textContent = result;
-    victoriesDOM.textContent = showVictories();
-});
+    if (target.id == "rock") {
+        result = playRound(ROCK, getComputerChoice());
+    } else if (target.id == "paper") {
+        result = playRound(PAPER, getComputerChoice());
+    } else if (target.id == "scissors") {
+        result = playRound(SCISSORS, getComputerChoice());
+    } else {
+        console.log("incorrect id");
+    }
 
-paperDOM.addEventListener("click", () => {
-    result = playRound(PAPER, getComputerChoice());
-    resultDOM.textContent = result;
-    victoriesDOM.textContent = showVictories();
-});
-
-scissorsDOM.addEventListener("click", () => {
-    result = playRound(SCISSORS, getComputerChoice());
     resultDOM.textContent = result;
     victoriesDOM.textContent = showVictories();
 });
