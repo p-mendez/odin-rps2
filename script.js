@@ -1,3 +1,9 @@
+/* TODO */
+// change css pseudo-class with js add class "hovered"
+// create new css class for "hovered"
+// add event listener for mouseover and have it add hovered class
+// when game ends remove class hovered from it
+
 // CONSTANTS
 const ROCK = "rock";
 const PAPER = "paper";
@@ -8,6 +14,7 @@ let playerVictoryCount = 0;
 let computerVictoryCount = 0;
 
 // DOM Elements
+const gameConsoleDOM = document.querySelector(".game-console");
 const resultDOM = document.querySelector("#result");
 const victoriesDOM = document.querySelector("#victories");
 const optionsContainer = document.querySelector(".options-container");
@@ -15,7 +22,6 @@ victoriesDOM.textContent = showVictories();
 
 // EVENT LISTENERS
 optionsContainer.addEventListener("click", delegateClickEvent);
-
 
 // FUNCTIONS
 /* Handles the click event and delegates it to the appropriate action 
@@ -36,6 +42,13 @@ function delegateClickEvent(e) {
 
     resultDOM.textContent = result;
     victoriesDOM.textContent = showVictories();
+    
+    if (gameHasEnded()) {
+        optionsContainer.removeEventListener("click", delegateClickEvent);
+        let gameEndString = document.createElement("p");
+        gameEndString.textContent = "THE GAME HAS ENDED";
+        gameConsoleDOM.appendChild(gameEndString);
+    }
 }
 
 /* Returns string of computer's Choice.*/
@@ -88,4 +101,9 @@ function getResultString(result, winner, loser) {
 /* Returns string of current player and computer victories */
 function showVictories() {
     return "Player victories :\t"+ playerVictoryCount + "\nComputer victories:\t" + computerVictoryCount;
+}
+
+/* Helper function that returns true if either victoryCount reaches 5 or over */
+function gameHasEnded() {
+    return (playerVictoryCount >= 5 || computerVictoryCount >= 5);
 }
