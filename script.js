@@ -23,6 +23,24 @@ victoriesDOM.textContent = showVictories();
 
 // EVENT LISTENERS
 optionsContainer.addEventListener("click", delegateClickEvent);
+optionsContainer.addEventListener("mouseover", addHoveredClass);
+optionsContainer.addEventListener("mouseout", removeHoveredClass);
+
+
+function addHoveredClass(e) {
+        if (e.target.id == ROCK ||
+            e.target.id == PAPER ||
+            e.target.id == SCISSORS)
+                e.target.classList.add("hovered");
+}
+
+function removeHoveredClass(e) {
+    if (e.target.id == ROCK ||
+        e.target.id == PAPER ||
+        e.target.id == SCISSORS)
+            e.target.classList.remove("hovered");
+}
+
 
 // FUNCTIONS
 /* Handles the click event and delegates it to the appropriate action 
