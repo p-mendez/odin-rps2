@@ -43,11 +43,15 @@ function delegateClickEvent(e) {
     resultDOM.textContent = result;
     victoriesDOM.textContent = showVictories();
     
-    if (gameHasEnded()) {
+    if (gameHasEnded(playerVictoryCount >= 5 || computerVictoryCount >= 5)) {
         optionsContainer.removeEventListener("click", delegateClickEvent);
         let gameEndString = document.createElement("p");
-        gameEndString.textContent = "THE GAME HAS ENDED";
-        gameConsoleDOM.appendChild(gameEndString);
+        if (playerVictoryCount >=5 ) {
+            gameEndString.textContent = "YOU'VE WON THE GAME!";
+        } else {
+            gameEndString.textContent = "THE COMPUTER HAS WON THE GAME.";
+        }
+        gameConsoleDOM.insertBefore(gameEndString, victoriesDOM);
     }
 }
 
