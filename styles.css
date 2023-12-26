@@ -36,7 +36,9 @@ img:hover {
 }
 
 .game-console {
+    align-items: center;
     display: flex;
+    flex-direction: column;
     font:inherit;
     font-size: 20px;
 }
