@@ -135,7 +135,17 @@ function getGameEndString(playerVictoryCount, computerVictoryCount) {
 
 /* Helper function that removes the event listener and adds the gameEnd string to the game-console */
 function endTheGame() {
+    // Remove Event Listeners
     optionsContainer.removeEventListener("click", delegateClickEvent);
+    optionsContainer.removeEventListener("mouseover", addHoveredClass);
+    optionsContainer.removeEventListener("mouseout", removeHoveredClass);
+
+    // Remove hovered formatting from all children in options-container
+    for (const child of optionsContainer.children) {
+        child.classList.remove("hovered");
+    }
+    // Add gameEndString to DOM
+    
     let gameEndString = document.createElement("p");
     gameEndString.textContent = getGameEndString(playerVictoryCount, computerVictoryCount);
     gameConsoleDOM.insertBefore(gameEndString, victoriesDOM);
