@@ -16,46 +16,23 @@ const optionsContainer = document.querySelector(".options-container");
 victoriesDOM.textContent = showVictories();
 
 // EVENT LISTENERS
-optionsContainer.addEventListener("click", delegateClickEvent);
+optionsContainer.addEventListener("click", handleButtonClick);
 optionsContainer.addEventListener("mouseover", addHoveredClass);
 optionsContainer.addEventListener("mouseout", removeHoveredClass);
 
 // FUNCTIONS
 // Main game functions
 
-/* Handles the click event and delegates it to the appropriate action 
- * based on the ID of the clicked target. */
-function delegateClickEvent(e) {
-    let target = e.target;
-    let result;
 
-    if (target.id == "rock") {
-        result = playRound(ROCK, getComputerChoice());
-    } else if (target.id == "paper") {
-        result = playRound(PAPER, getComputerChoice());
-    } else if (target.id == "scissors") {
-        result = playRound(SCISSORS, getComputerChoice());
-    } else {
-        console.log("incorrect id");
-    }
+/* MAIN FUNCTION: Handles the click event by getting a result of the RPS match,
+ * updating the DOM, and (if necessary) ending the game. */ 
+function handleButtonClick(e) {
+    let result = getResult(e.target);
 
-    resultDOM.textContent = result;
-    victoriesDOM.textContent = showVictories();
+    updateDOM(result);
     
     if (gameMeetsEndCondition()) {
         endTheGame();
-    }
-}
-
-/* Returns string of computer's Choice.*/
-function getComputerChoice() {
-    let randomNumber = Math.floor((Math.random() * 3) + 1);
-    if (randomNumber == 1) {
-        return ROCK;
-    } else if (randomNumber == 2) {
-        return PAPER;
-    } else {
-        return SCISSORS;
     }
 }
 
@@ -85,6 +62,12 @@ function playRound(playerSelection, computerSelection) {
     }
 } 
 
+function updateDOM(result) {
+    resultDOM.textContent = result;
+    victoriesDOM.textContent = showVictories();
+}
+
+// FUNCTIONS
 // Helper functions
 
 /* Adds 'hovered' to element's class if it is a clickable elemement */
@@ -96,7 +79,7 @@ function addHoveredClass(e) {
 /* Removes event listeners, resets the styling, and adds the game end message.*/
 function endTheGame() {
     // Remove Event Listeners
-    optionsContainer.removeEventListener("click", delegateClickEvent);
+    optionsContainer.removeEventListener("click", handleButtonClick);
     optionsContainer.removeEventListener("mouseover", addHoveredClass);
     optionsContainer.removeEventListener("mouseout", removeHoveredClass);
 
@@ -117,12 +100,37 @@ function gameMeetsEndCondition() {
     return (playerVictoryCount >= MAX_VICTORIES || computerVictoryCount >= MAX_VICTORIES);
 }
 
+/* Returns string of computer's choice.*/
+function getComputerChoice() {
+    let randomNumber = Math.floor((Math.random() * 3) + 1);
+    if (randomNumber == 1) {
+        return ROCK;
+    } else if (randomNumber == 2) {
+        return PAPER;
+    } else {
+        return SCISSORS;
+    }
+}
+
 /* Returns a string with who won the game */
 function getGameEndString(playerVictoryCount, computerVictoryCount) {
     if (playerVictoryCount >=5 ) {
         return "YOU'VE WON THE GAME!";
     } else {
         return "THE COMPUTER HAS WON THE GAME.";
+    }
+}
+
+/* Determines the winner of a match based on the player and computer's choice */
+function getResult(playerChoice) {
+    if (playerChoice.id == "rock") {
+        return playRound(ROCK, getComputerChoice());
+    } else if (playerChoice.id == "paper") {
+        return playRound(PAPER, getComputerChoice());
+    } else if (playerChoice.id == "scissors") {
+        return playRound(SCISSORS, getComputerChoice());
+    } else {
+        console.log("incorrect id");
     }
 }
 
