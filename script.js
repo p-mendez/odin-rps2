@@ -1,9 +1,3 @@
-/* TODO */
-// change css pseudo-class with js add class "hovered"
-// create new css class for "hovered"
-// add event listener for mouseover and have it add hovered class
-// when game ends remove class hovered from it
-
 // CONSTANTS
 const ROCK = "rock";
 const PAPER = "paper";
@@ -145,7 +139,7 @@ function endTheGame() {
     for (const child of optionsContainer.children) {
         child.classList.remove("hovered");
     }
-    
+
     // Add gameEndString to DOM
     let gameEndString = document.createElement("p");
     gameEndString.textContent = getGameEndString(playerVictoryCount, computerVictoryCount);
