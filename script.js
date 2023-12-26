@@ -127,15 +127,14 @@ function getGameEndString(playerVictoryCount, computerVictoryCount) {
     }
 }
 
-/* Helper function that removes the event listener, pseudo-classes and 
- * adds the gameEnd string to the game-console */
+/* Helper function that removes event listeners, resets the styling, and adds the game end message.*/
 function endTheGame() {
     // Remove Event Listeners
     optionsContainer.removeEventListener("click", delegateClickEvent);
     optionsContainer.removeEventListener("mouseover", addHoveredClass);
     optionsContainer.removeEventListener("mouseout", removeHoveredClass);
 
-    // Remove hovered formatting from all children in options-container
+    // Remove hovered styling from all children in options-container
     for (const child of optionsContainer.children) {
         child.classList.remove("hovered");
     }
