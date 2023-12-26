@@ -62,6 +62,8 @@ function playRound(playerSelection, computerSelection) {
     }
 } 
 
+/* Updates the resultDOM with the new result and shows the current victories of the 
+ * user and computer */
 function updateDOM(result) {
     resultDOM.textContent = result;
     victoriesDOM.textContent = showVictories();
