@@ -8,6 +8,7 @@
 const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
+const MAX_VICTORIES = 5;
 
 // VARIABLES
 let playerVictoryCount = 0;
@@ -43,15 +44,8 @@ function delegateClickEvent(e) {
     resultDOM.textContent = result;
     victoriesDOM.textContent = showVictories();
     
-    if (gameHasEnded(playerVictoryCount >= 5 || computerVictoryCount >= 5)) {
-        optionsContainer.removeEventListener("click", delegateClickEvent);
-        let gameEndString = document.createElement("p");
-        if (playerVictoryCount >=5 ) {
-            gameEndString.textContent = "YOU'VE WON THE GAME!";
-        } else {
-            gameEndString.textContent = "THE COMPUTER HAS WON THE GAME.";
-        }
-        gameConsoleDOM.insertBefore(gameEndString, victoriesDOM);
+    if (gameMeetsEndCondition()) {
+        endTheGame();
     }
 }
 
@@ -108,6 +102,23 @@ function showVictories() {
 }
 
 /* Helper function that returns true if either victoryCount reaches 5 or over */
-function gameHasEnded() {
-    return (playerVictoryCount >= 5 || computerVictoryCount >= 5);
+function gameMeetsEndCondition() {
+    return (playerVictoryCount >= MAX_VICTORIES || computerVictoryCount >= MAX_VICTORIES);
+}
+
+/* Helper function that returns a string with who won the game */
+function getGameEndString(playerVictoryCount, computerVictoryCount) {
+    if (playerVictoryCount >=5 ) {
+        return "YOU'VE WON THE GAME!";
+    } else {
+        return "THE COMPUTER HAS WON THE GAME.";
+    }
+}
+
+/* Helper function that removes the event listener and adds the gameEnd string to the game-console */
+function endTheGame() {
+    optionsContainer.removeEventListener("click", delegateClickEvent);
+    let gameEndString = document.createElement("p");
+    gameEndString.textContent = getGameEndString(playerVictoryCount, computerVictoryCount);
+    gameConsoleDOM.insertBefore(gameEndString, victoriesDOM);
 }
