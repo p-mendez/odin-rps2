@@ -20,22 +20,6 @@ optionsContainer.addEventListener("click", delegateClickEvent);
 optionsContainer.addEventListener("mouseover", addHoveredClass);
 optionsContainer.addEventListener("mouseout", removeHoveredClass);
 
-
-function addHoveredClass(e) {
-        if (e.target.id == ROCK ||
-            e.target.id == PAPER ||
-            e.target.id == SCISSORS)
-                e.target.classList.add("hovered");
-}
-
-function removeHoveredClass(e) {
-    if (e.target.id == ROCK ||
-        e.target.id == PAPER ||
-        e.target.id == SCISSORS)
-            e.target.classList.remove("hovered");
-}
-
-
 // FUNCTIONS
 /* Handles the click event and delegates it to the appropriate action 
  * based on the ID of the clicked target. */
@@ -144,4 +128,16 @@ function endTheGame() {
     gameEndString.style.marginTop = "16px";
     gameEndString.textContent = getGameEndString(playerVictoryCount, computerVictoryCount);
     gameConsoleDOM.insertBefore(gameEndString, victoriesDOM);
+}
+
+/* Adds 'hovered' to element's class if it is a clickable elemement */
+function addHoveredClass(e) {
+    if (e.target.classList.contains("clickable"))
+        e.target.classList.add("hovered");
+}
+
+/* Removes 'hovered' from element's class if it is a clickable elemement */
+function removeHoveredClass(e) {
+if (e.target.classList.contains("clickable"))
+    e.target.classList.remove("hovered");
 }
