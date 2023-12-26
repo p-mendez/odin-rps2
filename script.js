@@ -21,6 +21,8 @@ optionsContainer.addEventListener("mouseover", addHoveredClass);
 optionsContainer.addEventListener("mouseout", removeHoveredClass);
 
 // FUNCTIONS
+// Main game functions
+
 /* Handles the click event and delegates it to the appropriate action 
  * based on the ID of the clicked target. */
 function delegateClickEvent(e) {
@@ -83,35 +85,15 @@ function playRound(playerSelection, computerSelection) {
     }
 } 
 
-/* Returns string showing Win or Lose and what choices were played */
-function getResultString(result, winner, loser) {
-    let winnerProperCase = winner.substring(0,1).toUpperCase() + winner.substring(1).toLowerCase();
-    let loserProperCase = loser.substring(0,1).toUpperCase() + loser.substring(1).toLowerCase();
-    let resultProperCase = result.toLowerCase();
+// Helper functions
 
-    return `You ${resultProperCase}! ${winnerProperCase} beats ${loserProperCase}.`;
+/* Adds 'hovered' to element's class if it is a clickable elemement */
+function addHoveredClass(e) {
+    if (e.target.classList.contains("clickable"))
+        e.target.classList.add("hovered");
 }
 
-/* Returns string of current player and computer victories */
-function showVictories() {
-    return "Player victories :\t"+ playerVictoryCount + "\nComputer victories:\t" + computerVictoryCount;
-}
-
-/* Helper function that returns true if either victoryCount reaches 5 or over */
-function gameMeetsEndCondition() {
-    return (playerVictoryCount >= MAX_VICTORIES || computerVictoryCount >= MAX_VICTORIES);
-}
-
-/* Helper function that returns a string with who won the game */
-function getGameEndString(playerVictoryCount, computerVictoryCount) {
-    if (playerVictoryCount >=5 ) {
-        return "YOU'VE WON THE GAME!";
-    } else {
-        return "THE COMPUTER HAS WON THE GAME.";
-    }
-}
-
-/* Helper function that removes event listeners, resets the styling, and adds the game end message.*/
+/* Removes event listeners, resets the styling, and adds the game end message.*/
 function endTheGame() {
     // Remove Event Listeners
     optionsContainer.removeEventListener("click", delegateClickEvent);
@@ -130,14 +112,36 @@ function endTheGame() {
     gameConsoleDOM.insertBefore(gameEndString, victoriesDOM);
 }
 
-/* Adds 'hovered' to element's class if it is a clickable elemement */
-function addHoveredClass(e) {
-    if (e.target.classList.contains("clickable"))
-        e.target.classList.add("hovered");
+/* Returns true if either victoryCount reaches 5 or over */
+function gameMeetsEndCondition() {
+    return (playerVictoryCount >= MAX_VICTORIES || computerVictoryCount >= MAX_VICTORIES);
+}
+
+/* Returns a string with who won the game */
+function getGameEndString(playerVictoryCount, computerVictoryCount) {
+    if (playerVictoryCount >=5 ) {
+        return "YOU'VE WON THE GAME!";
+    } else {
+        return "THE COMPUTER HAS WON THE GAME.";
+    }
+}
+
+/* Returns string showing Win or Lose and what choices were played */
+function getResultString(result, winner, loser) {
+    let winnerProperCase = winner.substring(0,1).toUpperCase() + winner.substring(1).toLowerCase();
+    let loserProperCase = loser.substring(0,1).toUpperCase() + loser.substring(1).toLowerCase();
+    let resultProperCase = result.toLowerCase();
+
+    return `You ${resultProperCase}! ${winnerProperCase} beats ${loserProperCase}.`;
 }
 
 /* Removes 'hovered' from element's class if it is a clickable elemement */
 function removeHoveredClass(e) {
-if (e.target.classList.contains("clickable"))
-    e.target.classList.remove("hovered");
+    if (e.target.classList.contains("clickable"))
+        e.target.classList.remove("hovered");
+}
+
+/* Returns string of current player and computer victories */
+function showVictories() {
+    return "Player victories :\t"+ playerVictoryCount + "\nComputer victories:\t" + computerVictoryCount;
 }
