@@ -43,6 +43,10 @@ img:hover {
     font-size: 20px;
 }
 
+.game-console > * {
+    margin-bottom: 0;
+}
+
 #victories {
     font-size: 16px;
     font-family: 'Courier New', Courier, monospace;
