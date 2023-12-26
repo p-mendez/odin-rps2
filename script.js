@@ -141,7 +141,8 @@ function endTheGame() {
     }
 
     // Add gameEndString to DOM
-    let gameEndString = document.createElement("p");
+    let gameEndString = document.createElement("strong");
+    gameEndString.style.marginTop = "16px";
     gameEndString.textContent = getGameEndString(playerVictoryCount, computerVictoryCount);
     gameConsoleDOM.insertBefore(gameEndString, victoriesDOM);
 }
